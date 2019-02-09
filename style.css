@@ -1,0 +1,146 @@
+body{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+	overflow: hidden;
+	align-items: center;
+	background-image:url("yueye.jpg");
+	background-size: 100% 100%;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+
+
+}
+#toast{
+	position: fixed;
+	left: 50%;
+	top: 70%;
+	transform: translateX(-50%);
+	z-index: 3;
+	background-color: white;
+
+}
+
+#hi{
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	left: 40px;
+	top: 20px;
+
+}
+#lb{
+	position: fixed;
+	left: 75px;
+	top: 60px;
+
+}
+#lvImg{
+	position: fixed;
+	left: 100px;
+	top: 55px;
+	width: 300px;
+	height: 25px;
+	z-index: 1;
+
+}
+#level{
+	position: fixed;
+	left: 100px;
+	top: 35px;
+	z-index: 2;
+	font-size:20px;
+
+}
+#hpImg{
+	position: fixed;
+	left: 100px;
+	top: 20px;
+	width: 300px;
+	height: 25px;
+	background-color: black;
+
+}
+#tc{
+	position: fixed;
+	right: 20px;
+	top: 20px;
+
+}
+#bp{
+	position: fixed;
+	right: 115px;
+	top: 20px;
+
+}
+#tt{
+	position: fixed;
+	right: 60px;
+	top: 20px;
+
+}
+.cci{
+	width: 200px;
+	height: 600px;
+
+}
+#c1{
+	position: fixed;
+	left: 150px;
+	top: 150px;
+	width: 210px;
+	height: 600px;
+
+
+}
+#c2{
+	position: fixed;
+	left: 400px;
+	top: 150px;
+	width: 210px;
+	height: 600px;
+
+
+}
+#c3{
+	position: fixed;
+	left: 650px;
+	top: 150px;
+	width: 210px;
+	height: 600px;
+
+
+}
+#out{
+	position:fixed;
+	width: 400px;
+	height: 280px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+	background-color: black;
+	border-radius: 10px;
+	border-color: black;
+
+
+}
+#qr{
+	position: absolute;
+	top:30%;
+	left: 100px;
+	width: 60px;
+	height: 30px;
+
+}
+#qx{
+	position: absolute;
+	top: 30%;
+	width: 60px;
+	height: 30px;
+	right: 100px;
+	size: 10;
+
+}
