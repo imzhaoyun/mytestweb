@@ -105,7 +105,7 @@ ui1=function(){
 	setImg('hp','hpImg','ui1');
 	setImg('lv','lvImg','ui1');
 	setButton('0','lb','ui1');
-	setInfo('等级：0/50','level','ui1');
+	setInfo('经验：0/50','level','ui1');
 
 
 
