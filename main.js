@@ -68,7 +68,7 @@ addExp=function(num){
 		exp-=50;
 		lv++;
 	}
-	document.getElementById('level').innerHTML="EXP "+exp+"/50<br/>";
+	document.getElementById('level').innerHTML="经验："+exp+"/50<br/>";
 	document.getElementById('lvImg').style.width=exp*6+"px";
 	document.getElementById('lb').innerHTML=lv;
 
@@ -94,7 +94,7 @@ outQx=function(){
 }
 window.onload=function(){
 	ui1();
-	toast('Press F11 to fullscreen');
+	toast(按F11进入全屏模式！');
 
 }
 
@@ -105,7 +105,7 @@ ui1=function(){
 	setImg('hp','hpImg','ui1');
 	setImg('lv','lvImg','ui1');
 	setButton('0','lb','ui1');
-	setInfo('EXP  0/50','level','ui1');
+	setInfo('等级：0/50','level','ui1');
 
 
 
