@@ -97,7 +97,6 @@ window.onload=function(){
 	toast(按F11进入全屏模式！');
 
 }
-
 ui1=function(){
 	setDiv("ui1");
 	setImg('head','hi','ui1');
