@@ -94,7 +94,7 @@ outQx=function(){
 }
 window.onload=function(){
 	ui1();
-	toast(按F11进入全屏模式！');
+	toast('按F11进入全屏模式！');
 
 }
 ui1=function(){
