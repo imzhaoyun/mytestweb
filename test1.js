@@ -78,6 +78,7 @@ setP=function(info,id,div){
 
 //50每级升级经验相同
 addExp=function(num){
+	alert("聂耀洋SB!");
 	exp+=num;
 	if(exp>=50){
 		exp-=50;
