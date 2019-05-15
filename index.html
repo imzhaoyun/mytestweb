@@ -1,12 +1,367 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="main.js" ></script>
-<link rel="stylesheet" type="text/css" href="style.css" />
-
+	<title>只踩黑块</title>
 </head>
 <body>
 	
-</body>
+<div id='div1'>
 
+<p id="pn">别踩白块</p>
+
+<button onclick="start()" id="xs">限时模式</button>
+<button onclick="window.close()" id="tc">退出游戏</button>
+</div>
+
+	<style type="text/css">
+		body{
+	
+	background-size: 100% 100%;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-user-select:none;
+	-moz-user-select:   none;
+	-o-user-select:     none;
+	user-select:        none;
+
+}
+button{
+	width: 20%;
+	height: 10%;
+	position: fixed;
+	left: 70%;
+
+}
+
+#xs{
+	top: 10%;
+
+}
+#jd{
+	top: 25%;
+}
+#tc{
+	top: 40%;
+}
+#pn{
+	position: fixed;
+	left: 15%;
+	top: 15%;
+	font-size: 60px;
+}
+#div1{
+	background-color: black;
+	margin: 0px;
+	padding: 0px;
+	
+	width: 50%;
+	height: 100%;
+	position: fixed;
+	left: 50%;
+	top: 0%;
+
+}
+
+.hs{
+	background-color: black;
+	width: 25%;
+	height: 25%;
+	position: fixed;
+}
+.bs{
+	background-color: white;
+	width: 25%;
+	height: 25%;
+	position: fixed;
+}
+	</style>
+
+<script type="text/javascript">
+	game={
+	fk:[
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+	],
+	fkn:-1,
+	score:0,
+
+}
+//控制台显示数组
+sArray=function(name){
+
+	var ia="";
+
+if(hma(name)>1){
+	for(var i=0;i<name.length;i++){
+	
+		for(var j=0;j<name[i].length;j++){
+            ia+=name[i][j]+" | ";
+
+		}
+		console.log('['+i+'] '+ia);
+		ia="";
+	}
+}
+
+else {
+	for(var i=0;i<name.length;i++){
+		ia+="["+i+"] "+name[i]+" | ";
+	}
+	console.log('('+i+') '+ia);
+	ia='';
+}
+
+}
+
+hma=function(name){
+	
+  if(name[name.length-1][0]) return name.length;
+  else return 1;	     
+
+}
+
+randArray=function(){
+	for(var i=0;i<5;i++){
+		var t=Math.random();
+		t++;
+		for(var j=0;j<=t;j++){
+			var t1=Math.round(Math.random()*3);
+			game.fk[i][t1]=1;
+		}
+	}
+}
+taf=function(n){
+
+	if(game.fk[n][0]||game.fk[n][1]||game.fk[n][2]||game.fk[n][3]){
+		clearInterval(jsq);
+		alert("GAME OVER!!!\n游戏得分："+game['score']);
+	}
+	else{
+		
+	}
+}
+randA1=function(i){
+	var x,x1,x2,x3,x4;
+		game.fk[i][0]=Math.round(Math.random());
+		game.fk[i][1]=Math.round(Math.random());
+		game.fk[i][2]=Math.round(Math.random());
+		game.fk[i][3]=Math.round(Math.random());
+		
+		switch(i){
+			case 0:
+			x=0;
+			break;
+			case 1:
+			x=4;
+			break;
+			case 2:
+			x=8;
+			break;
+			case 3:
+			x=12;
+			break;
+			case 4:
+			x=16;
+			break;
+
+		}
+        game['fk'+x]['color']=game.fk[i][0];
+        game['fk'+(1+x)]['color']=game.fk[i][1];
+        game['fk'+(2+x)]['color']=game.fk[i][2];
+        game['fk'+(3+x)]['color']=game.fk[i][3];
+
+
+
+        if(game.fk[i][0]==1) x1="black";
+        else x1="white";
+		document.getElementById("sd"+x).style.backgroundColor=x1;
+		if(game.fk[i][1]==1) x2="black";
+        else x2="white";
+		document.getElementById("sd"+(x+1)).style.backgroundColor=x2;
+		if(game.fk[i][2]==1) x3="black";
+        else x3="white";
+		document.getElementById("sd"+(x+2)).style.backgroundColor=x3;
+		if(game.fk[i][3]==1) x4="black";
+        else x4="white";
+		document.getElementById("sd"+(x+3)).style.backgroundColor=x4;
+		
+
+	
+}
+
+setAO=function(){
+
+	var num=0;
+	for(var i=0;i<5;i++){
+		for(var j=0;j<4;j++){
+			
+			k=game['fk'][i][j];
+			game['fk'+num]=new setObj(i,j,k,'sd'+num,num);
+			setDiv(game['fk'+num]);
+			num++;
+		}
+	}
+}
+
+function start(){
+	randArray();
+ //sArray(game.fk);
+ lastTime(10);
+	setAO();
+	allDrop();
+	
+}
+
+sad=[0,[5,4,8,],2,3,4,[[8,6,5],2,3]];
+window.onload=function(){
+
+console.log("10s内点击最多的黑色方块，点击到白色方块游戏结束，");
+console.log("每点击一个黑块得一分，单击右键刷新可开始下一局。");
+
+
+}
+
+function lastTime(t){
+	setTimeout(function(){
+		clearInterval(jsq);
+		alert("GAME OVER!!!\n得分："+game['score']);
+	},t*1000);
+
+}
+allDrop=function(){
+	
+	var a=0,s=25,d=50,f=75,g=100;
+	
+	
+	
+    jsq=setInterval(function(){
+    var SD1=document.getElementById('sd'+(game.fkn+1));
+	var SD2=document.getElementById('sd'+(game.fkn+2));
+	var SD3=document.getElementById('sd'+(game.fkn+3));
+	var SD4=document.getElementById('sd'+(game.fkn+4));
+	var SD5=document.getElementById('sd'+(game.fkn+5));
+	var SD6=document.getElementById('sd'+(game.fkn+6));
+	var SD7=document.getElementById('sd'+(game.fkn+7));
+	var SD8=document.getElementById('sd'+(game.fkn+8));
+	var SD9=document.getElementById('sd'+(game.fkn+9));
+	var SD10=document.getElementById('sd'+(game.fkn+10));
+	var SD11=document.getElementById('sd'+(game.fkn+11));
+	var SD12=document.getElementById('sd'+(game.fkn+12));
+	var SD13=document.getElementById('sd'+(game.fkn+13));
+	var SD14=document.getElementById('sd'+(game.fkn+14));
+	var SD15=document.getElementById('sd'+(game.fkn+15));
+	var SD16=document.getElementById('sd'+(game.fkn+16));
+	var SD17=document.getElementById('sd'+(game.fkn+17));
+	var SD18=document.getElementById('sd'+(game.fkn+18));
+	var SD19=document.getElementById('sd'+(game.fkn+19));
+	var SD20=document.getElementById('sd'+(game.fkn+20));
+    	
+    	a--;s--;d--;f--;g--;
+    	if(a==-25)  {
+    		a=100;
+    		taf(0);
+    		randA1(0);
+    	}
+    	if(s==-25)  {
+    		s=100;
+    		taf(1);
+    		randA1(1);
+    	}
+    	if(d==-25)  {
+    		d=100;
+    		taf(2);
+    		randA1(2);
+    	}
+    	if(f==-25)  {
+    		f=100;
+    		taf(3);
+    		randA1(3);
+    	}
+    	if(g==-25)  {
+    		g=100;
+    		taf(4);
+    		randA1(4);
+    	}
+
+         SD1.style.bottom=a+"%";
+         SD2.style.bottom=a+"%";
+         SD3.style.bottom=a+"%";
+         SD4.style.bottom=a+"%";
+
+        
+         SD5.style.bottom=s+"%";
+         SD6.style.bottom=s+"%";
+         SD7.style.bottom=s+"%";
+         SD8.style.bottom=s+"%";
+
+
+         SD9.style.bottom=d+"%";
+        SD10.style.bottom=d+"%";
+        SD11.style.bottom=d+"%";
+        SD12.style.bottom=d+"%";
+
+        
+        SD13.style.bottom=f+"%";
+        SD14.style.bottom=f+"%";
+        SD15.style.bottom=f+"%";
+        SD16.style.bottom=f+"%";
+
+
+        
+        SD17.style.bottom=g+"%";
+        SD18.style.bottom=g+"%";
+        SD19.style.bottom=g+"%";
+        SD20.style.bottom=g+"%";
+
+    },100/3);
+}
+setDiv=function(obj0){
+	
+	if(obj0['color']==1) cl="hs";
+	else cl='bs';
+	var sd=document.createElement("button");
+	sd.setAttribute("class",cl);
+	sd.setAttribute("id",obj0['num']);
+	
+	sd.style.left=obj0.y*25+"%";
+	sd.style.bottom=obj0.x*25+"%";
+	sd.addEventListener('click',
+		function(){
+
+			eval("game.fk"+obj0.numi+".method()");
+			this.style.backgroundColor="grey";
+
+		});
+	document.body.appendChild(sd);
+
+
+}
+setObj=function(x,y,z,a,b){
+	this.x=x;
+	this.y=y;
+	this.color=z;
+	this.num=a;
+	this.numi=b;
+	this.method=function(){
+		if(this.color==true){
+			this.color=false;
+			game.fk[this.x][this.y]=0;
+		game['score']++;
+		}
+		else{
+		clearInterval(jsq);
+		alert("GAME OVER!!!\n得分："+game['score']);
+		}
+
+	}
+
+
+}
+
+</script>
+</body>
 </html>
